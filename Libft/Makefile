@@ -37,7 +37,6 @@ SRCS	=	ft_putchar.c \
 			ft_tolower.c \
 			ft_calloc.c \
 			ft_strdup.c \
-			ft_itoa.c #temporary#
 
 SRCS_2	=	ft_substr.c \
 			ft_strjoin.c \
@@ -61,15 +60,16 @@ NAME	= libft.a
 
 all : 		${NAME}
 
-${NAME} :	${OBJS}
-			ar rc ${NAME} ${OBJS}
+${NAME} :	${OBJS} ${OBJS_2}
+			ar rc ${NAME} ${OBJS} ${OBJS_2}
 			ranlib ${NAME}
 
 clean :
-			del ${OBJS}
+			del ${OBJS} ${OBJS_2}
 
 fclean :	clean
 			del ${NAME}
+			del test.exe
 
 re :		fclean all
 

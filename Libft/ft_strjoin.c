@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 22:53:14 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/10 22:53:14 by acanterg         ###   ########.fr       */
+/*   Created: 2021/02/15 12:21:40 by acanterg          #+#    #+#             */
+/*   Updated: 2021/02/15 12:21:40 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t      ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t len_s;
-	size_t len_d;
+    int     len_s1;
+    int     len_s2;
+    char    *str;
 
-	len_s = ft_strlen((char*)src);
-	len_d = ft_strlen(dst);
-	if (len_d >= dstsize)
-		return (dstsize + len_s);
-	if (len_s < (dstsize - len_d))
-	{
-		ft_memcpy(dst + len_d, src, len_s);
-		dst[len_d + len_s] = '\0';
-	}
-	else
-	{
-		ft_memcpy(dst + len_d, src, dstsize - len_d - 1);
-		dst[dstsize - 1] = '\0';
-	}
-	return (len_d + len_s);
+    len_s1 = ft_strlen((char*)s1);
+    len_s2 = ft_strlen((char*)s2);
+    if (!(str = malloc((len_s1 + len_s2 + 1) * sizeof(char))))
+        return (NULL);
+    ft_memcpy(str, (char*)s1, len_s1);
+    ft_memcpy(str + len_s1, (char*)s2, len_s2);
+    str[len_s1 + len_s2] = '\0';
+    return (str);
 }

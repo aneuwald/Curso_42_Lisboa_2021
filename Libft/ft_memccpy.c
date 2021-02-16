@@ -12,7 +12,21 @@
 
 #include "libft.h"
 
-void    ft_memccpy(void)
+void    *ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-    printf("Funcao a implementar: %s\n", "ft_memccpy");
+    char    *dest_p;
+    char    *src_p;
+    size_t  i;
+
+    dest_p = dest;
+    src_p = (char*)src;
+    i = 0;
+    while(i < n)
+    {
+        dest_p[i] = src_p[i];
+        if (dest_p[i] == (unsigned char)c)
+            return(dest_p + i + 1);
+        i++;
+    }
+    return (NULL);
 }

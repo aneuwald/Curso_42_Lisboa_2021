@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void    ft_strchr(void)
+char	*ft_strchr(const char *s, int c)
 {
-    printf("Funcao a implementar: %s\n", "ft_strchr");
+	return ((char*)ft_memchr(s, c, ft_strlen(s)));
 }
