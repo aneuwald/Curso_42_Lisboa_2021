@@ -12,7 +12,21 @@
 
 #include "libft.h"
 
-void    ft_strmapi(void)
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    printf("Funcao a implementar: %s\n", "ft_strmapi");
+    unsigned int    index;
+    char            *result;
+
+    if (!s || !f)
+        return (NULL);
+    if (!(result = malloc((ft_strlen(s) + 1) * sizeof(char))))
+        return (NULL);
+    index = 0;
+    while (s[index])
+    {
+        result[index] = f(index, s[index]);
+        index++;
+    }
+    result[index] = '\0';
+    return (result);
 }

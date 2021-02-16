@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void    ft_putstr_fd(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-    printf("Funcao a implementar: %s\n", "ft_putstr_fd");
+    write(fd, s, ft_strlen(s));
 }

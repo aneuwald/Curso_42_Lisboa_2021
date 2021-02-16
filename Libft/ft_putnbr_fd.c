@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void    ft_putnbr_fd(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-    printf("Funcao a implementar: %s\n", "ft_putnbr_fd");
+    ft_putstr_fd(ft_itoa(n), fd);
 }

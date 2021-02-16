@@ -12,7 +12,12 @@
 
 #include "libft.h"
 
-void    ft_substr(void)
+char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
-    printf("Funcao a implementar: %s\n", "ft_substr");
+    char    *result;
+
+    if (!(result = malloc((len + 1) * sizeof(char))))
+        return (NULL);
+    ft_strlcpy(result, s + start, len + 1);
+    return (result);
 }
