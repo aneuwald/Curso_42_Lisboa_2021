@@ -68,13 +68,13 @@ clean :
 			del ${OBJS} ${OBJS_2}
 
 fclean :	clean
-			del ${NAME}
-			del test.exe
+			rm -f ${NAME}
+			rm -f test.exe
 
 re :		fclean all
 
 test :		${NAME}
 			${GCC} ${CFLAGS} -o test test.c libft.a
-			test.exe
+			test.a
 
 .PHONY: 	all clean fclean re test
