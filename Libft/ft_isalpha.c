@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:54:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/10 22:54:20 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/17 14:45:56 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_isalpha(int c)
+int		ft_isalpha(int c)
 {
-    if (c >= 'A' && c <= 'Z')
-        return (1);
-    if (c >= 'a' && c <= 'z')
-        return (2);
-    return (0);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (2);
+	return (0);
 }

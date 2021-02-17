@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+         #
+#    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/02/10 23:55:33 by acanterg         ###   ########.fr        #
+#    Updated: 2021/02/17 15:11:29 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,16 +65,16 @@ ${NAME} :	${OBJS} ${OBJS_2}
 			ranlib ${NAME}
 
 clean :
-			del ${OBJS} ${OBJS_2}
+			rm -f ${OBJS} ${OBJS_2}
 
 fclean :	clean
 			rm -f ${NAME}
-			rm -f test.exe
+			rm -f test.out
 
 re :		fclean all
 
 test :		${NAME}
-			${GCC} ${CFLAGS} -o test test.c libft.a
-			test.a
+			${GCC} ${CFLAGS} -o test.out test.c libft.a
+			./test.out
 
 .PHONY: 	all clean fclean re test

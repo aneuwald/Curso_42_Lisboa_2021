@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 23:58:40 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/10 23:58:40 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:17:53 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 
 char    func_mapi(unsigned int i, char c)
 {
-    if (i < 5)
-        return ('I');
-    if (c == 'l' || c == 'W')
-        return ('<');
-    return (c);
+    (void) i;
+    return(ft_tolower(c));
 }
 
 int    main(void)
@@ -44,7 +41,7 @@ int    main(void)
     printf("\nft_memcmp()" OK " | (\"42Lisboa\", \"42LisboZ\", 8) -> %d | (\"Hello World\", \"hello World\", 5) -> %d", ft_memcmp("42Lisboa", "42LisboZ", 8), ft_memcmp("Hello World", "hello World", 5));
     printf("\nft_strlen()" OK " | \"Function test\" -> %d", ft_strlen("Function test"));
     char strlcpy1[] = "Hello";
-    printf("\nft_strlcpy()" OK " | (strlcpy1, \"World\", 5) -> %I64d - %s", ft_strlcpy(strlcpy1, "World", 5), strlcpy1);
+    printf("\nft_strlcpy()" OK " | (strlcpy1, \"World\", 5) -> %zu - %s", ft_strlcpy(strlcpy1, "World", 5), strlcpy1);
     printf("\nft_strlcat()" OK);
     printf("\nft_strchr()" OK " | (\"Function Test\", 'n') -> %s", ft_strchr("Function Test", 'n'));
     printf("\nft_strrchr()" OK " | (\"Function Test\", 'n') -> %s", ft_strrchr("Function Test", 'n'));
@@ -68,11 +65,12 @@ int    main(void)
     char **split = ft_split(" This  is  a  Test.  ", " ");
     printf("\nft_split()" OK " | (\" This  is  a  Test.  \", \" \") -> \"%s\" \"%s\" \"%s\" \"%s\"", split[0], split[1], split[2], split[3]);
     printf("\nft_itoa()" OK " | 9465 -> \"%s\" | -1520 -> \"%s\" | 0 -> \"%s\"", ft_itoa(9465), ft_itoa(-1520), ft_itoa(0));
-    printf("\nft_strmapi()" OK " | \42Lisboa Hello World\" -> \"%s\"", ft_strmapi("42Lisboa Hello World", &func_mapi));
+    
+    printf("\nft_strmapi()" OK " | \"42Lisboa Hello World\" -> \"%s\"", ft_strmapi("42Lisboa Hello World", &func_mapi));
     
     int fd = open("test.txt", O_WRONLY);
     printf("\nft_putchar_fd('c', fd)" OK " -> Check test.txt"); ft_putchar_fd('c', fd); ft_putchar_fd('\n', fd);
-    printf("\nft_putstr_fd(\"Teste ft_pustr_fd\", fd)" OK " -> Check test.txt"); ft_putstr_fd("Teste ft_pustr_fd", fd); aft_putchar_fd('\n', fd);
+    printf("\nft_putstr_fd(\"Teste ft_pustr_fd\", fd)" OK " -> Check test.txt"); ft_putstr_fd("Teste ft_pustr_fd", fd); ft_putchar_fd('\n', fd);
     printf("\nft_putendl_fd(\"Teste ft_putendl_fd\", fd)" OK " -> Check test.txt"); ft_putendl_fd("Teste ft_putendl_fd", fd);
     printf("\nft_putnbr_fd(25648, fd)" OK " -> Check test.txt"); ft_putnbr_fd(25648, fd); ft_putchar_fd('\n', fd);
 
