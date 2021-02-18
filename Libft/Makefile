@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/02/18 18:20:58 by acanterg         ###   ########.fr        #
+#    Updated: 2021/02/18 18:37:05 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,8 @@ NAME	= libft.a
 
 all : 		${NAME}
 
-$(NAME) :	${OBJS} ${OBJS_2} ${OBJS_B}
-			ar rc ${NAME} ${OBJS} ${OBJS_2} ${OBJS_B}
+$(NAME) :	${OBJS} ${OBJS_2}
+			ar rc ${NAME} ${OBJS} ${OBJS_2}
 			ranlib ${NAME}
 
 bonus :		${NAME} ${OBJS_B}
@@ -82,7 +82,6 @@ clean :
 
 fclean :	clean
 			rm -f ${NAME}
-			rm -f test.out
 
 re :		fclean all
 
