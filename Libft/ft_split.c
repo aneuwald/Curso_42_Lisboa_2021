@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 12:18:02 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/15 12:18:02 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:47:42 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int  is_in_charset(char c, char *charset)
-{
-	while (*charset)
-	{
-		if (c == *charset)
-			return (1);
-		charset++;
-	}
-	return (0);
-}
-
-static int	ft_count_words_split(char *str, char *charset)
+static int		ft_count_words_split(char const *str, char c)
 {
 	int	counter;
 	int looking_words;
@@ -32,9 +21,9 @@ static int	ft_count_words_split(char *str, char *charset)
 	looking_words = 1;
 	while (*str)
 	{
-		if (is_in_charset(*str, charset))
+		if (*str == c)
 			looking_words = 1;
-		else if (!is_in_charset(*str, charset) && looking_words)
+		else if (*str != c && looking_words)
 		{
 			looking_words = 0;
 			counter++;
@@ -44,50 +33,40 @@ static int	ft_count_words_split(char *str, char *charset)
 	return (counter);
 }
 
-static char *get_next_word(char *str, int *pos, char *charset)
+static int		get_end_index(char const *str, char c)
 {
-	int		i;
-	char	*word;
+	int		len;
 
-	while (str[*pos] && !is_in_charset(str[*pos], charset))
-		*pos += 1;
-	i = 0;
-	if (!(word = malloc(sizeof(char) * *pos + 1))) 
-        return NULL;
-	while (i < *pos)
-	{
-		word[i] = *str;
-		i++;
-		str++;
-	}
-	word[i] = '\0';
-	return (word);
+	len = 0;
+	while (str[len] && str[len] != c)
+		len++;
+	return (len);
 }
 
-char        **ft_split(char *str, char *charset)
+char			**ft_split(char const *s, char c)
 {
 	char	**matrix;
-	int		size;
-	int		i;
-	int		pos;
+	int		count_words;
+	int		w;
+	size_t	end;
 
-	pos = 0;
-	size = ft_count_words_split(str, charset) + 1;
-	if (!(matrix = malloc(sizeof(char *) * size)))
-		return (0);
-	i = 0;
-	while (i < size - 1)
+	if (!s)
+		return (NULL);
+	count_words = ft_count_words_split(s, c) + 1;
+	if (!(matrix = malloc(sizeof(char *) * count_words)))
+		return (NULL);
+	w = 0;
+	while (w < count_words - 1)
 	{
-		if (is_in_charset(*str, charset))
-			str++;
+		if (*s == c)
+			s++;
 		else
 		{
-			matrix[i] = get_next_word(str, &pos, charset);
-			str += pos;
-			pos = 0;
-			i++;
+			end = get_end_index(s, c);
+			matrix[w++] = ft_substr(s, 0, end);
+			s += end;
 		}
 	}
-	matrix[i] = 0;
+	matrix[w] = 0;
 	return (matrix);
 }

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:53:47 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/10 22:53:47 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/18 16:04:06 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-char    *ft_strnstr(const char *s1, const char *s2, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t  i;
-	size_t  j;
-    
+	size_t	i;
+	size_t	j;
+
 	if (s2[0] == '\0')
 		return ((char*)s1);
 	i = 0;

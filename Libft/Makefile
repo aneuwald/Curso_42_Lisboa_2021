@@ -6,13 +6,11 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/02/17 15:11:29 by acanterg         ###   ########.fr        #
+#    Updated: 2021/02/18 18:20:58 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_putchar.c \
-			ft_putstr.c \
-			ft_memset.c \
+SRCS	=	ft_memset.c \
 			ft_bzero.c \
 			ft_memcpy.c \
 			ft_memccpy.c \
@@ -49,8 +47,19 @@ SRCS_2	=	ft_substr.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c
 
+SRCS_B	=	ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c 
+
 OBJS	= ${SRCS:.c=.o}
 OBJS_2	= ${SRCS_2:.c=.o}
+OBJS_B	= ${SRCS_B:.c=.o}
 GCC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME	= libft.a
@@ -60,21 +69,21 @@ NAME	= libft.a
 
 all : 		${NAME}
 
-${NAME} :	${OBJS} ${OBJS_2}
-			ar rc ${NAME} ${OBJS} ${OBJS_2}
+$(NAME) :	${OBJS} ${OBJS_2} ${OBJS_B}
+			ar rc ${NAME} ${OBJS} ${OBJS_2} ${OBJS_B}
+			ranlib ${NAME}
+
+bonus :		${NAME} ${OBJS_B}
+			ar rc ${NAME} ${OBJS_B}
 			ranlib ${NAME}
 
 clean :
-			rm -f ${OBJS} ${OBJS_2}
+			rm -f ${OBJS} ${OBJS_2} ${OBJS_B}
 
 fclean :	clean
 			rm -f ${NAME}
 			rm -f test.out
 
 re :		fclean all
-
-test :		${NAME}
-			${GCC} ${CFLAGS} -o test.out test.c libft.a
-			./test.out
 
 .PHONY: 	all clean fclean re test

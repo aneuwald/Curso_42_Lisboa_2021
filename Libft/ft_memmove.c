@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:51:18 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/17 14:40:40 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/17 16:23:46 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	if (!src && !dest)
+		return (NULL);
 	if (src < dest && src + n > dest)
 	{
 		while (n > 0)
