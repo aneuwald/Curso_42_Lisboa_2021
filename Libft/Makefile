@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/02/18 18:37:05 by acanterg         ###   ########.fr        #
+#    Updated: 2021/02/25 14:56:10 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,9 @@ bonus :		${NAME} ${OBJS_B}
 
 clean :
 			rm -f ${OBJS} ${OBJS_2} ${OBJS_B}
+
+teste:		
+			${GCC} ${CFLAGS} -fsanitize=address -g ft_split.c ft_substr.c ft_strlcpy.c ft_strlen.c && ./a.out
 
 fclean :	clean
 			rm -f ${NAME}

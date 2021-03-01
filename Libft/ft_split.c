@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 12:18:02 by acanterg          #+#    #+#             */
-/*   Updated: 2021/02/18 15:47:42 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:55:03 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,11 @@ char			**ft_split(char const *s, char c)
 	matrix[w] = 0;
 	return (matrix);
 }
+
+#include <stdio.h>
+
+int main()
+{
+	char	**test = ft_split("", '\0');
+	printf("t: %s", *test);
+	}
