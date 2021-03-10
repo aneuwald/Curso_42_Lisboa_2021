@@ -26,15 +26,23 @@ typedef struct		s_obj
 	int			index;
 	va_list		vargs;
 	int			width;
-}				t_obj;
+	int			precision;
+	int			zero;
+	int			minus;
+	int			space;
+	int			hastag;
+	int			plus;
+}					t_obj;
 
 int		ft_printf(const char *str, ...);
 void	ft_print_c(t_obj *obj);
 void	ft_print_s(t_obj *obj);
-void	ft_print_d(t_obj *obj);
+void	ft_print_di(t_obj *obj);
 void	ft_print_p(t_obj *obj);
 void	ft_print_u(t_obj *obj);
 void	ft_print_x(t_obj *obj);
+void	ft_print_n(t_obj *obj);
+void	ft_print_extra(t_obj *obj, int len);
 void	ft_putchar(char c, t_obj *obj);
 void	ft_putnbr(int64_t n, t_obj *obj);
 int		ft_strlen(char *str);

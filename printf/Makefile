@@ -29,7 +29,7 @@ clean :
 			rm -f $(OBJS)
 
 test:		$(NAME)
-			@$(GCC) $(CFLAGS) -fsanitize=address -g test.c $(NAME) && ./a.out && rm a.out
+			@$(GCC) $(CFLAGS) -fsanitize=address -g test.c $(NAME) && ./a.out && rm -f a.out
 			
 
 fclean :	clean

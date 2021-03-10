@@ -14,7 +14,10 @@
 
 void	reset_obj(t_obj *obj)
 {
-	obj->width = -1;
+	obj->width = 0;
+	obj->minus = 0;
+	obj->zero = 0;
+	obj->precision = 0;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -25,22 +28,53 @@ void	init_obj(t_obj *obj, char *s)
 	reset_obj(obj);
 }
 
+void	handle_flags(t_obj *obj)
+{
+	if (obj->str[obj->index] == '-')
+	{	
+		obj->minus = 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == '0')
+	{	
+		obj->zero = 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == '*')
+	{	
+		obj->width = va_arg(obj->vargs, int);;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == '.')
+	{	
+		obj->index += 1;
+		obj->precision = va_arg(obj->vargs, int);;
+		obj->index += 1;
+	}
+	while(obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
+	{
+		obj->width = (obj->width * 10) + (obj->str[obj->index] - '0');
+		obj->index += 1;
+	}
+}
+
 void	handle_entry(t_obj *obj)
 {
 	char c;
 
-	obj->index += 1;
 	c = obj->str[obj->index];
 	if (c == 'c')
 		ft_print_c(obj);
 	else if (c == 'd' || c == 'i')
-		ft_print_d(obj);
+		ft_print_di(obj);
 	else if (c == 's')
 		ft_print_s(obj);
 	else if (c == 'p')
 		ft_print_p(obj);
 	else if (c == 'u')
 		ft_print_u(obj);
+	else if (c == 'n')
+		ft_print_n(obj);
 	else if (c == 'x' || c == 'X')
 		ft_print_x(obj);
 }
@@ -56,7 +90,11 @@ int		ft_printf(const char *s, ...)
 	{
 		c = s[obj.index];
 		if (c == '%')
+		{
+			obj.index += 1;
+			handle_flags(&obj);
 			handle_entry(&obj);
+		}
 		else
 			ft_putchar(c, &obj);
 		reset_obj(&obj);
