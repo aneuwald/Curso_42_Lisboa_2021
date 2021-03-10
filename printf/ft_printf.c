@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/08 18:06:37 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/10 17:10:11 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ void	handle_flags(t_obj *obj)
 	}
 	if (obj->str[obj->index] == '*')
 	{	
-		obj->width = va_arg(obj->vargs, int);;
+		obj->width = va_arg(obj->vargs, int);
+		if (obj->width < 0)
+		{
+			obj->width *= -1;
+			obj->minus = 1;
+		}
 		obj->index += 1;
 	}
 	if (obj->str[obj->index] == '.')

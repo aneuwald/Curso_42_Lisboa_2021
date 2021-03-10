@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/08 18:06:11 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/10 17:02:52 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int	get_size(int64_t n)
 
 void	ft_print_x(t_obj *obj)
 {
-	int64_t x;
-	int size;
+	uint32_t	x;
+	int			size;
 
-	x = va_arg(obj->vargs, int64_t);
+	x = va_arg(obj->vargs, uint32_t);
 	size = get_size(x);
 	if (obj->width > size && obj->minus == 0)
 		ft_print_extra(obj, obj->width - size);
