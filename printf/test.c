@@ -23,8 +23,8 @@ void	test_s()
 {
 	printf ("\n\n### TESTE STRING [s] ###");
 	char s[] = "Teste";
-	   printf("\n[Orig] -> |%s| |%12.s| |%*s| |%-9s|\n", s, s, 7, s, s);
-	ft_printf("[Mine] -> |%s| |%12s| |%*s| |%-9s|", s, s, 7, s, s);
+	   printf("\n[Orig] -> |%s| |%-6.s| |%*s| |%-9s|\n", s, s, 7, s, s);
+	ft_printf("[Mine] -> |%s| |%-6.s| |%*s| |%-9s|", s, s, 7, s, s);
 }
 void	test_d()
 {

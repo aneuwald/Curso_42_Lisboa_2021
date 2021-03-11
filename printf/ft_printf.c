@@ -18,6 +18,7 @@ void	reset_obj(t_obj *obj)
 	obj->minus = 0;
 	obj->zero = 0;
 	obj->precision = 0;
+	obj->dot = 0;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -50,16 +51,20 @@ void	handle_flags(t_obj *obj)
 		}
 		obj->index += 1;
 	}
-	if (obj->str[obj->index] == '.')
-	{	
-		obj->index += 1;
-		obj->precision = va_arg(obj->vargs, int);;
-		obj->index += 1;
-	}
 	while(obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
 	{
 		obj->width = (obj->width * 10) + (obj->str[obj->index] - '0');
 		obj->index += 1;
+	}
+	if (obj->str[obj->index] == '.')
+	{	
+		obj->dot = 1;
+		obj->index += 1;
+		while(obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
+		{
+			obj->precision = (obj->precision * 10) + (obj->str[obj->index] - '0');
+			obj->index += 1;
+		}
 	}
 }
 

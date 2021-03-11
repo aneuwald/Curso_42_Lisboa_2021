@@ -28,6 +28,7 @@ typedef struct		s_obj
 	int			width;
 	int			precision;
 	int			zero;
+	int			dot;
 	int			minus;
 	int			space;
 	int			hastag;
