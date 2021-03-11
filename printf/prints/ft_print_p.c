@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/10 17:15:26 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/11 18:05:20 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,4 @@ void	ft_print_p(t_obj *obj)
 	ft_putnbr_base(p, "0123456789abcdef" ,obj);
 	if (obj->width > size && obj->minus == 1)
 		ft_print_extra(obj, obj->width - size);
-
-	
 }

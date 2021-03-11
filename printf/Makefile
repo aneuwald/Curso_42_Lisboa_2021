@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/08 14:15:27 by acanterg         ###   ########.fr        #
+#    Updated: 2021/03/11 18:03:24 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,10 @@ clean :
 
 test:		$(NAME)
 			@$(GCC) $(CFLAGS) -fsanitize=address -g test.c $(NAME) && ./a.out && rm -f a.out
+
+trip:		
+			make m -C printfTester
+			
 			
 
 fclean :	clean

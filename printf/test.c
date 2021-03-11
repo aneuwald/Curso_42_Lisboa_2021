@@ -23,16 +23,16 @@ void	test_s()
 {
 	printf ("\n\n### TESTE STRING [s] ###");
 	char s[] = "Teste";
-	   printf("\n[Orig] -> |%s| |%-6.s| |%*s| |%-9s|\n", s, s, 7, s, s);
-	ft_printf("[Mine] -> |%s| |%-6.s| |%*s| |%-9s|", s, s, 7, s, s);
+	   printf("\n[Orig] -> |%s| |%-6.s| |%.*s| |%-9.1s|\n", s, s, -2, NULL, NULL);
+	    ft_printf("[Mine] -> |%s| |%-6.s| |%.*s| |%-9.1s|", s, s, -2, NULL, NULL);
 }
 void	test_d()
 {
 	printf ("\n\n### TESTE INT [d] ###");
 	int d1 = 439544;
 	int d2 = -1834;
-	   printf("\n[Orig] -> |%d| |%8d| |%010d| |%*d| |%-9d|\n", d1, d1, d1, 7, d2, d2);
-	ft_printf("[Mine] -> |%d| |%8d| |%010d| |%*d| |%-9d|", d1, d1, d1, 7, d2, d2);
+	   printf("\n[Orig] -> |%-3.2d| |%8d| |%010d| |%*d| |%-9d|\n", 1, d1, d1, 7, d2, d2);
+	ft_printf("[Mine] -> |%-3.2d| |%8d| |%010d| |%*d| |%-9d|", 1, d1, d1, 7, d2, d2);
 }
 void	test_i()
 {

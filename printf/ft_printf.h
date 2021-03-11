@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 21:48:04 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/08 18:06:18 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/11 18:23:57 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <limits.h>
 
 typedef struct		s_obj
 {
@@ -45,6 +46,8 @@ void	ft_print_x(t_obj *obj);
 void	ft_print_n(t_obj *obj);
 void	ft_print_extra(t_obj *obj, int len);
 void	ft_putchar(char c, t_obj *obj);
+char	*ft_strdup(char *s);
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
 void	ft_putnbr(int64_t n, t_obj *obj);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str, t_obj *obj);

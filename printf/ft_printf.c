@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/10 17:10:11 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/11 18:23:52 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ void	init_obj(t_obj *obj, char *s)
 	reset_obj(obj);
 }
 
+
 void	handle_flags(t_obj *obj)
 {
 	if (obj->str[obj->index] == '-')
-	{	
+	{
 		obj->minus = 1;
 		obj->index += 1;
 	}
 	if (obj->str[obj->index] == '0')
-	{	
+	{
 		obj->zero = 1;
 		obj->index += 1;
 	}
 	if (obj->str[obj->index] == '*')
-	{	
+	{
 		obj->width = va_arg(obj->vargs, int);
 		if (obj->width < 0)
 		{
@@ -51,16 +52,21 @@ void	handle_flags(t_obj *obj)
 		}
 		obj->index += 1;
 	}
-	while(obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
+	while (obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
 	{
 		obj->width = (obj->width * 10) + (obj->str[obj->index] - '0');
 		obj->index += 1;
 	}
 	if (obj->str[obj->index] == '.')
-	{	
+	{
 		obj->dot = 1;
 		obj->index += 1;
-		while(obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
+		if (obj->str[obj->index] == '*')
+		{
+			obj->precision = va_arg(obj->vargs, int);
+			obj->index += 1;
+		}
+		while (obj->str[obj->index] >= '0' && obj->str[obj->index] <= '9')
 		{
 			obj->precision = (obj->precision * 10) + (obj->str[obj->index] - '0');
 			obj->index += 1;
@@ -73,6 +79,7 @@ void	handle_entry(t_obj *obj)
 	char c;
 
 	c = obj->str[obj->index];
+	//obj->conv = c;
 	if (c == 'c')
 		ft_print_c(obj);
 	else if (c == 'd' || c == 'i')
