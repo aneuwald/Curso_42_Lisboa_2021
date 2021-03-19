@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+         #
+#    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/19 19:13:24 by aneuwald         ###   ########.fr        #
+#    Created: 2021/03/19 19:18:55 by acanterg          #+#    #+#              #
+#    Updated: 2021/03/19 19:18:56 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
 
 SRCS	= ft_printf.c $(wildcard srcs/*.c) $(wildcard prints/*.c)
 OBJS	= $(SRCS:.c=.o)
