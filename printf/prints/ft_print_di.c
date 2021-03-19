@@ -3,25 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_di.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/11 18:38:37 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/19 13:26:25 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_size(int n)
+static int	get_size(unsigned int n)
 {
 	int len;
 
 	len = 0;
-	if (n < 0)
-	{
-		n = -n;
-		len++;
-	}
 	while(n > 0)
 	{
 		len++;
@@ -33,21 +28,29 @@ static int	get_size(int n)
 
 void		ft_print_di(t_obj *obj)
 {
-	int d;
-	int size;
-	int num_size;
+	int				temp;
+	unsigned int	d;
 
-	d = va_arg(obj->vargs, int);
-	num_size = get_size(d);
-	size = num_size;
-	if (obj->dot && obj->precision > size)
-		size = obj->precision;
-	if (obj->width > size && obj->minus == 0)
-		ft_print_extra(obj, obj->width - size);
-	while(size - ++num_size > 0)
-		ft_putchar('0',obj);
-	if (!(obj->precision == 0 && d == 0))
+	temp = va_arg(obj->vargs, int);
+	if (temp < 0)
+	{
+		d = (unsigned int) -temp;
+		obj->neg = 1; 
+	}
+	else
+		d = temp;
+	obj->size = get_size(d);
+	if (d == 0 && obj->dot && !obj->precision)
+		obj->size = 0;
+	else if (d == 0)
+		obj->size = 1;
+	if (obj->minus == 0)
+		ft_print_spaces(obj);
+	if (obj->neg)
+		ft_putchar('-', obj);
+	ft_print_zeros(obj);
+	if (obj->size)
 		ft_putnbr(d, obj);
-	if (obj->width > size && obj->minus == 1)
-		ft_print_extra(obj, obj->width - size);
+	if (obj->minus == 1)
+		ft_print_spaces(obj);
 }

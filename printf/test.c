@@ -23,16 +23,16 @@ void	test_s()
 {
 	printf ("\n\n### TESTE STRING [s] ###");
 	char s[] = "Teste";
-	   printf("\n[Orig] -> |%s| |%-6.s| |%.*s| |%-9.1s|\n", s, s, -2, NULL, NULL);
-	    ft_printf("[Mine] -> |%s| |%-6.s| |%.*s| |%-9.1s|", s, s, -2, NULL, NULL);
+	   printf("\n[Orig] -> |%*.s| |%.1s| |%.*s| |%-9.1s|\n", 10, "123", "4567", -2, s, "");
+	    ft_printf("[Mine] -> |%*.s| |%.1s| |%.*s| |%-9.1s|", 10, "123", "4567", -2, "", "");
 }
 void	test_d()
 {
 	printf ("\n\n### TESTE INT [d] ###");
-	int d1 = 439544;
-	int d2 = -1834;
-	   printf("\n[Orig] -> |%-3.2d| |%8d| |%010d| |%*d| |%-9d|\n", 1, d1, d1, 7, d2, d2);
-	ft_printf("[Mine] -> |%-3.2d| |%8d| |%010d| |%*d| |%-9d|", 1, d1, d1, 7, d2, d2);
+	//int d1 = 439544;
+	//int d2 = -1834;
+	   printf("\n[Orig] -> --0*%0*.0d*0 0*%0*.10d*0--\n", -21, INT_MAX, 21, INT_MIN);
+	ft_printf("[Mine] -> --0*%0*.0d*0 0*%0*.10d*0-- ", -21, INT_MAX, 21, INT_MIN);
 }
 void	test_i()
 {
@@ -46,8 +46,8 @@ void	test_p()
 {
 	printf ("\n\n### TESTE POINTER [p] ###");
 	int 	*p = 0;
-	   printf("\n[Orig] -> |%p| |%18p| |%*p| |%-15p|\n", p, p, 16, p, p);
-	ft_printf("[Mine] -> |%p| |%18p| |%*p| |%-15p|", p, p, 16, p, p);
+	   printf("\n[Orig] ->  |%p| |%p|\n", ULONG_MAX, -ULONG_MAX);
+	ft_printf("[Mine] ->  |%p| |%p| ", ULONG_MAX, -ULONG_MAX);
 }
 void	test_u()
 {
@@ -59,11 +59,9 @@ void	test_u()
 }
 void	test_x()
 {
-	int x1 = 4395;
-	int x2 = -1834;
 	printf ("\n\n### TESTE HEX [x] ###");
-	   printf("\n[Orig] -> |%x| |%6x| |%06x| |%*x| |%-13x|\n", x1, x1, x1, 13, x2, x2);
-	ft_printf("[Mine] -> |%x| |%6x| |%06x| |%*x| |%-13x|", x1, x1, x1, 13, x2, x2);
+	   printf("\n[Orig] -> |%-.5x|\n", 0);
+	ft_printf("[Mine] -> |%-.5x| ", 0);
 }
 void	test_X()
 {
@@ -73,6 +71,7 @@ void	test_X()
 	   printf("\n[Orig] -> |%X| |%6X| |%06X| |%*X| |%-13X|\n", X1, X1, X1, 13, X2, X2);
 	ft_printf("[Mine] -> |%X| |%6X| |%06X| |%*X| |%-13X|", X1, X1, X1, 13, X2, X2);
 }
+
 
 int 	main(void)
 {
@@ -84,6 +83,9 @@ int 	main(void)
 	test_u();
 	test_x();
 	test_X();
+
+	printf("\n\n %%c%%s%%p%%d%%i%%u%%x%%X%% \n");
+	ft_printf("\n %%c%%s%%p%%d%%i%%u%%x%%X%% ");
 
 	return(0);
 }

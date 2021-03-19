@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 20:43:37 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/08 17:29:03 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/19 18:31:44 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,15 @@ static int		base_is_invalid(char *base)
 	return (0);
 }
 
-void	ft_putnbr_base(int64_t nbr, char *base, t_obj *obj)
+void	ft_putnbr_base(unsigned long nbr, char *base, t_obj *obj)
 {
-	int64_t	holder;
-	int64_t	base_length;
+	unsigned long 	holder;
+	unsigned long 	base_length;
 
 	if (base_is_invalid(base))
 		return ;
 	base_length = ft_strlen(base);
 	holder = nbr;
-	if (nbr < 0)
-	{
-		ft_putchar('-', obj);
-		holder = -nbr;
-	}
 	if (holder >= base_length)
 	{
 		ft_putnbr_base(holder / base_length, base, obj);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 18:28:30 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/08 17:55:15 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/19 13:21:33 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	ft_putnbr(int64_t n, t_obj *obj)
 	uint64_t	holder;
 
 	holder = n;
-	if (n < 0)
-	{
-		ft_putchar('-', obj);
-		holder = -n;
-	}
 	if (holder >= 10)
 	{
 		ft_putnbr(holder / 10, obj);

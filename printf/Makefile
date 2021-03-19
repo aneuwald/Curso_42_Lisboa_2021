@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
+#    By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/10 23:55:33 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/11 18:03:24 by acanterg         ###   ########.fr        #
+#    Updated: 2021/03/19 19:13:24 by aneuwald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,9 @@ $(NAME) :	$(OBJS)
 clean :
 			rm -f $(OBJS)
 
-test:		$(NAME)
-			@$(GCC) $(CFLAGS) -fsanitize=address -g test.c $(NAME) && ./a.out && rm -f a.out
-
-trip:		
-			make m -C printfTester
+t:		$(NAME)
+			make a -C /printfTester
 			
-			
-
 fclean :	clean
 			rm -f $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/11 18:23:52 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/19 19:01:41 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	reset_obj(t_obj *obj)
 	obj->zero = 0;
 	obj->precision = 0;
 	obj->dot = 0;
+	obj->size = 0;
+	obj->neg = 0;
+	obj->conv = 0;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -29,8 +32,7 @@ void	init_obj(t_obj *obj, char *s)
 	reset_obj(obj);
 }
 
-
-void	handle_flags(t_obj *obj)
+void	handle_zero_minus(t_obj *obj)
 {
 	if (obj->str[obj->index] == '-')
 	{
@@ -42,6 +44,14 @@ void	handle_flags(t_obj *obj)
 		obj->zero = 1;
 		obj->index += 1;
 	}
+	if (obj->minus)
+		obj->zero = 0;
+}
+
+void	handle_flags(t_obj *obj)
+{
+	handle_zero_minus(obj);
+	handle_zero_minus(obj);
 	if (obj->str[obj->index] == '*')
 	{
 		obj->width = va_arg(obj->vargs, int);
@@ -79,7 +89,7 @@ void	handle_entry(t_obj *obj)
 	char c;
 
 	c = obj->str[obj->index];
-	//obj->conv = c;
+	obj->conv = c;
 	if (c == 'c')
 		ft_print_c(obj);
 	else if (c == 'd' || c == 'i')
@@ -94,6 +104,8 @@ void	handle_entry(t_obj *obj)
 		ft_print_n(obj);
 	else if (c == 'x' || c == 'X')
 		ft_print_x(obj);
+	else if (c == '%')
+		ft_putchar('%', obj);
 }
 
 int		ft_printf(const char *s, ...)

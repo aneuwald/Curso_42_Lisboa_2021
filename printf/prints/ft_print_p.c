@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aneuwald <aneuwald@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/11 18:05:20 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/19 18:25:56 by aneuwald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,37 @@ static int	get_size(int64_t n)
 	return (len);
 }
 
+void	ft_print_nil(t_obj *obj)
+{
+	char	*s;
+
+	s = "(nil)";
+	obj->size = 5;
+	if (obj->dot && obj->precision < obj->size)
+		obj->size = obj->precision;
+	if (obj->minus == 0)
+		ft_print_spaces(obj);
+	ft_putstr(s, obj);
+	if (obj->minus == 1)
+		ft_print_spaces(obj);
+}
+
 void	ft_print_p(t_obj *obj)
 {
-	int64_t	p;
-	int		size;
 
-	p = va_arg(obj->vargs, int64_t);
-	size = get_size(p) + (p == 0 ? 3 : 2);
-	if (obj->width > size && obj->minus == 0)
-		ft_print_extra(obj, obj->width - size);
+	unsigned long	p;
+
+	p = va_arg(obj->vargs, unsigned long);
+	if (p == 0)
+	{
+		ft_print_nil(obj);
+		return ;
+	}
+	obj->size = get_size(p) + 2;
+	if (obj->minus == 0)
+		ft_print_spaces(obj);
 	ft_putstr("0x", obj);
 	ft_putnbr_base(p, "0123456789abcdef" ,obj);
-	if (obj->width > size && obj->minus == 1)
-		ft_print_extra(obj, obj->width - size);
+	if (obj->minus == 1)
+		ft_print_spaces(obj);
 }
