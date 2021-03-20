@@ -44,10 +44,14 @@ void		ft_print_di(t_obj *obj)
 		obj->size = 0;
 	else if (d == 0)
 		obj->size = 1;
+	if (obj->size && d > 0 && obj->plus)
+		obj->size += 1;
 	if (obj->minus == 0)
 		ft_print_spaces(obj);
 	if (obj->neg)
 		ft_putchar('-', obj);
+	if (obj->plus && temp >= 0 && obj->size)
+		ft_putchar('+', obj);
 	ft_print_zeros(obj);
 	if (obj->size)
 		ft_putnbr(d, obj);

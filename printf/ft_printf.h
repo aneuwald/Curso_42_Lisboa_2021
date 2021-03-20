@@ -36,6 +36,7 @@ typedef struct		s_obj
 	int			space;
 	int			hastag;
 	int			plus;
+	int			hash;
 	char		conv;
 }					t_obj;
 

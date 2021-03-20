@@ -17,7 +17,7 @@ void    ft_putstr(char *str, t_obj *obj)
 	int	len;
 
 	len = ft_strlen(str);
-	if (obj->dot && len > obj->precision)
+	if (obj->dot && len > obj->precision && !obj->hash)
 		len = obj->precision;
 	write(1, str, len);
 	obj->printed += len;

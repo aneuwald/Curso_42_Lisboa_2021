@@ -33,7 +33,7 @@ clean :
 bonus :		all
 
 t :		$(NAME)
-			make a -C printfTester
+			make + -C printfTester
 			
 fclean :	clean
 			rm -f $(NAME)

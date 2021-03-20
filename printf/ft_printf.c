@@ -16,12 +16,14 @@ void	reset_obj(t_obj *obj)
 {
 	obj->width = 0;
 	obj->minus = 0;
+	obj->plus = 0;
 	obj->zero = 0;
 	obj->precision = 0;
 	obj->dot = 0;
 	obj->size = 0;
 	obj->neg = 0;
 	obj->conv = 0;
+	obj->hash = 0;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -32,26 +34,28 @@ void	init_obj(t_obj *obj, char *s)
 	reset_obj(obj);
 }
 
-void	handle_zero_minus(t_obj *obj)
+void	handle_zero_minus_plus(t_obj *obj)
 {
+	if (obj->str[obj->index] == '+')
+		obj->plus = 1;
 	if (obj->str[obj->index] == '-')
-	{
 		obj->minus = 1;
-		obj->index += 1;
-	}
 	if (obj->str[obj->index] == '0')
-	{
 		obj->zero = 1;
-		obj->index += 1;
-	}
 	if (obj->minus)
 		obj->zero = 0;
+	obj->index += 1;
 }
 
 void	handle_flags(t_obj *obj)
 {
-	handle_zero_minus(obj);
-	handle_zero_minus(obj);
+	if (obj->str[obj->index] == '#')
+	{
+		obj->hash = 1;
+		obj->index += 1;
+	}
+	handle_zero_minus_plus(obj);
+	handle_zero_minus_plus(obj);
 	if (obj->str[obj->index] == '*')
 	{
 		obj->width = va_arg(obj->vargs, int);

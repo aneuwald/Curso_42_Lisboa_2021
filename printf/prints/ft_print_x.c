@@ -37,8 +37,14 @@ void	ft_print_x(t_obj *obj)
 		obj->size = 0;
 	else if (x == 0)
 		obj->size = 1;
+	if (obj->hash && obj->size && x != 0)
+		obj->size += 2;
 	if (obj->minus == 0)
 		ft_print_spaces(obj);
+	if (obj->hash && obj->size && x != 0)
+		ft_putstr(obj->conv == 'x' ? "0x": "0X", obj);
+	if (obj->hash && obj->size && x != 0 && obj->dot)
+		obj->size -= 2;
 	ft_print_zeros(obj);
 	if (obj->size)
 	{
@@ -47,6 +53,8 @@ void	ft_print_x(t_obj *obj)
 		else
 			ft_putnbr_base(x, "0123456789ABCDEF" ,obj);
 	}
+	if (obj->hash && obj->size && x != 0 && obj->dot)
+		obj->size += 2;
 	if (obj->minus == 1)
 		ft_print_spaces(obj);
 
