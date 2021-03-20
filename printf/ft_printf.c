@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:18:48 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/20 12:09:32 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	handle_flags(t_obj *obj)
 	}
 }
 
-void	handle_entry(t_obj *obj)
+void	handle_conversion(t_obj *obj)
 {
 	char c;
 
@@ -122,7 +122,7 @@ int		ft_printf(const char *s, ...)
 		{
 			obj.index += 1;
 			handle_flags(&obj);
-			handle_entry(&obj);
+			handle_conversion(&obj);
 		}
 		else
 			ft_putchar(c, &obj);

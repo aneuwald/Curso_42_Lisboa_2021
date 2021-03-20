@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:02:50 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:19:48 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/20 12:05:52 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ void	ft_print_n(t_obj *obj)
 	int		*n;
 
 	n = (int*) va_arg(obj->vargs, int*);
-	//printf("\n%p\n", n);
 	*n = obj->printed;
 }

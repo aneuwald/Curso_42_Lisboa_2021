@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 21:48:04 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:18:59 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/20 12:10:15 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_print_n(t_obj *obj);
 void	ft_print_spaces(t_obj *obj);
 void	ft_print_zeros(t_obj *obj);
 void	ft_putchar(char c, t_obj *obj);
-char	*ft_strdup(char *s);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 void	ft_putnbr(int64_t n, t_obj *obj);
 int		ft_strlen(char *str);

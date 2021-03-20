@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 19:18:55 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/19 19:18:56 by acanterg         ###   ########.fr        #
+#    Updated: 2021/03/20 12:10:32 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,10 @@ $(NAME) :	$(OBJS)
 clean :
 			rm -f $(OBJS)
 
-t:		$(NAME)
-			make a -C /printfTester
+bonus :		all
+
+t :		$(NAME)
+			make a -C printfTester
 			
 fclean :	clean
 			rm -f $(NAME)
