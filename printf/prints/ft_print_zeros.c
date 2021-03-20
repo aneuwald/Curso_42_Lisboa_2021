@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 11:56:36 by aneuwald          #+#    #+#             */
-/*   Updated: 2021/03/19 19:19:17 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/20 22:33:39 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int get_zeros_num(t_obj *obj)
 		if (obj->zero && !obj->dot)
 		{
 			zeros_num = obj->width - obj->size;
-			if (obj->neg)
+			if (obj->neg || obj->plus || obj->space)
 				zeros_num--;
 		}
 		else

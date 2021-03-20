@@ -37,7 +37,7 @@ static int get_spaces_num(t_obj *obj)
 		spaces_num = obj->width - obj->precision;
 	else
 		spaces_num = obj->width - obj->size;
-	if (obj->neg)
+	if (obj->neg || obj->plus || obj->space)
 		spaces_num--;
 	if (obj->zero && !obj->dot)
 		spaces_num -= obj->width - obj->size;

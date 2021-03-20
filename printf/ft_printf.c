@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/20 12:09:32 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/20 22:40:28 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	reset_obj(t_obj *obj)
 	obj->width = 0;
 	obj->minus = 0;
 	obj->plus = 0;
+	obj->space = 0;
 	obj->zero = 0;
 	obj->precision = 0;
 	obj->dot = 0;
@@ -34,17 +35,33 @@ void	init_obj(t_obj *obj, char *s)
 	reset_obj(obj);
 }
 
-void	handle_zero_minus_plus(t_obj *obj)
+void	handle_zero_minus_plus_space(t_obj *obj)
 {
 	if (obj->str[obj->index] == '+')
+	{
 		obj->plus = 1;
+		obj->index += 1;
+	}
 	if (obj->str[obj->index] == '-')
+	{
 		obj->minus = 1;
+		obj->index += 1;
+	}
 	if (obj->str[obj->index] == '0')
+	{
 		obj->zero = 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == ' ')
+	{
+		obj->space = 1;
+		obj->index += 1;
+	}
 	if (obj->minus)
 		obj->zero = 0;
-	obj->index += 1;
+	if (obj->plus)
+		obj->space = 0;
+	
 }
 
 void	handle_flags(t_obj *obj)
@@ -54,8 +71,10 @@ void	handle_flags(t_obj *obj)
 		obj->hash = 1;
 		obj->index += 1;
 	}
-	handle_zero_minus_plus(obj);
-	handle_zero_minus_plus(obj);
+	handle_zero_minus_plus_space(obj);
+	handle_zero_minus_plus_space(obj);
+	handle_zero_minus_plus_space(obj);
+	handle_zero_minus_plus_space(obj);
 	if (obj->str[obj->index] == '*')
 	{
 		obj->width = va_arg(obj->vargs, int);
