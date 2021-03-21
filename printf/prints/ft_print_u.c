@@ -6,13 +6,13 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:19:44 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/21 06:50:46 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_size(unsigned int n)
+static int	get_size(uintmax_t n)
 {
 	int len;
 
@@ -26,11 +26,24 @@ static int	get_size(unsigned int n)
 	return (len);
 }
 
+static uintmax_t	parse_u(t_obj *obj)
+{
+	if (obj->l == 1)
+		return (va_arg(obj->vargs, unsigned long));
+	if (obj->l == 2)
+		return (va_arg(obj->vargs, unsigned long long));
+	if (obj->h == 1)
+		return ((unsigned short) va_arg(obj->vargs, unsigned int));
+	if (obj->h == 2)
+		return ((unsigned char) va_arg(obj->vargs, unsigned int));
+	return (va_arg(obj->vargs, unsigned int));
+}
+
 void	ft_print_u(t_obj *obj)
 {
-	unsigned int	u;
+	uintmax_t	u;
 
-	u = va_arg(obj->vargs, unsigned int);
+	u = parse_u(obj);
 	obj->size = get_size(u);
 	if (u == 0 && obj->dot && !obj->precision)
 		obj->size = 0;

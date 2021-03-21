@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 21:48:04 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/20 12:10:15 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/21 06:44:18 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct		s_obj
 	int			plus;
 	int			hash;
 	char		conv;
+	char		l;
+	char		h;
 }					t_obj;
 
 int		ft_printf(const char *str, ...);

@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/20 22:40:28 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/21 06:08:36 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	reset_obj(t_obj *obj)
 	obj->neg = 0;
 	obj->conv = 0;
 	obj->hash = 0;
+	obj->l = 0;
+	obj->h = 0;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -62,6 +64,30 @@ void	handle_zero_minus_plus_space(t_obj *obj)
 	if (obj->plus)
 		obj->space = 0;
 	
+}
+
+void	handle_length_modifiers(t_obj *obj)
+{
+	if (obj->str[obj->index] == 'l')
+	{
+		obj->l += 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == 'l')
+	{
+		obj->l += 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == 'h')
+	{
+		obj->h += 1;
+		obj->index += 1;
+	}
+	if (obj->str[obj->index] == 'h')
+	{
+		obj->h += 1;
+		obj->index += 1;
+	}
 }
 
 void	handle_flags(t_obj *obj)
@@ -145,6 +171,7 @@ int		ft_printf(const char *s, ...)
 		{
 			obj.index += 1;
 			handle_flags(&obj);
+			handle_length_modifiers(&obj);
 			handle_conversion(&obj);
 		}
 		else

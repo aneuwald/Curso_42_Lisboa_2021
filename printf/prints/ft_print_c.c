@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:01:19 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:19:26 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/21 06:44:48 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_c(t_obj *obj)
 {
-	char c;
+	int c;
 	
-	c = (char) va_arg(obj->vargs, int);
+	c = va_arg(obj->vargs, int);
 	obj->size = 1;
 	if (obj->minus == 0)
 		ft_print_spaces(obj);

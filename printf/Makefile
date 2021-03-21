@@ -6,7 +6,7 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 19:18:55 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/20 22:38:47 by acanterg         ###   ########.fr        #
+#    Updated: 2021/03/21 07:04:23 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,11 @@ clean :
 bonus :		all
 
 t :		$(NAME)
-			make + -C printfTester
-			
-test :		$(NAME)
-			$(GCC) -fsanitize=address test.c $(NAME) -o a.exe && ./a.exe && rm -rf a.exe
+			make a -C printfTester
 
 fclean :	clean
 			rm -f $(NAME)
 
 re :		fclean all
 
-.PHONY: 	all clean fclean re test
+.PHONY: 	all clean fclean re t
