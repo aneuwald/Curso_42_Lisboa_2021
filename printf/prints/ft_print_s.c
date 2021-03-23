@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:02:50 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/21 06:44:34 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 15:25:18 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	ft_print_s(t_obj *obj)
 
 	s = va_arg(obj->vargs, char*);
 	if (s == NULL)
+	{
 		s = "(null)";
+		obj->precision < 0 ? obj->precision = 6 : 0;
+	}
 	obj->size = ft_strlen(s);
 	if (obj->dot && obj->precision < obj->size)
 		obj->size = obj->precision;

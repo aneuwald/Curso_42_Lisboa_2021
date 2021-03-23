@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/21 06:08:36 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:28:18 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	reset_obj(t_obj *obj)
 	obj->hash = 0;
 	obj->l = 0;
 	obj->h = 0;
+	obj->wprint = 4;
 }
 
 void	init_obj(t_obj *obj, char *s)
@@ -143,8 +144,10 @@ void	handle_conversion(t_obj *obj)
 		ft_print_c(obj);
 	else if (c == 'd' || c == 'i')
 		ft_print_di(obj);
-	else if (c == 's')
+	else if (c == 's' && !obj->l)
 		ft_print_s(obj);
+	else if (c == 's' && obj->l)
+		ft_print_ls(obj);
 	else if (c == 'p')
 		ft_print_p(obj);
 	else if (c == 'u')
