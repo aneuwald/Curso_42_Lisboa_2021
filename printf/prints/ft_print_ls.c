@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:02:50 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/23 15:57:59 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:32:15 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_ls(t_obj *obj)
 
 	i = 0;
 	s = va_arg(obj->vargs, wchar_t*);
-		if (s == NULL)
+	if (s == NULL)
 	{
 		s = L"(null)";
 		obj->precision < 0 ? obj->precision = 6 : 0;

@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_spaces.c                                   :+:      :+:    :+:   */
+/*   ft_print_spaces.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanterg <acantergi@student.42.fr>         +#+  +:+       +#+        */
+/*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 10:22:42 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/10 10:22:42 by acanterg         ###   ########.fr       */
+/*   Created: 2021/03/23 16:45:49 by acanterg          #+#    #+#             */
+/*   Updated: 2021/03/23 16:45:50 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int get_spaces_str(t_obj *obj)
+static int	get_spaces_str(t_obj *obj)
 {
-
 	int spaces_str;
 
 	spaces_str = 0;
@@ -27,9 +26,8 @@ static int get_spaces_str(t_obj *obj)
 	return (spaces_str);
 }
 
-static int get_spaces_num(t_obj *obj)
+static int	get_spaces_num(t_obj *obj)
 {
-
 	int spaces_num;
 
 	spaces_num = 0;
@@ -44,7 +42,7 @@ static int get_spaces_num(t_obj *obj)
 	return (spaces_num);
 }
 
-void ft_print_spaces(t_obj *obj)
+void		ft_print_spaces(t_obj *obj)
 {
 	int spaces;
 

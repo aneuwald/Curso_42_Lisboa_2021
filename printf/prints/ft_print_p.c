@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:03:20 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/23 14:19:47 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:46:12 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ static int	get_size(int64_t n)
 		len++;
 		n /= 16;
 	}
-
 	return (len);
 }
 
-void	ft_print_p(t_obj *obj)
+void		ft_print_p(t_obj *obj)
 {
 	unsigned long	p;
 

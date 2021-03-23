@@ -6,13 +6,13 @@
 #    By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/19 19:18:55 by acanterg          #+#    #+#              #
-#    Updated: 2021/03/23 14:02:23 by acanterg         ###   ########.fr        #
+#    Updated: 2021/03/23 17:08:01 by acanterg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-SRCS	= ft_printf.c $(wildcard srcs/*.c) $(wildcard prints/*.c)
+SRCS	= $(wildcard *.c) $(wildcard srcs/*.c) $(wildcard prints/*.c)
 OBJS	= $(SRCS:.c=.o)
 GCC		= gcc
 CFLAGS	= -Wall -Wextra -Werror

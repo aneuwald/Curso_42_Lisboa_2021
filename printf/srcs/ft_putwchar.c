@@ -6,11 +6,20 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 14:49:43 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/23 16:21:47 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:56:23 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_print_wchars(t_obj *obj, size_t size, unsigned char str[4])
+{
+	obj->wprint -= size;
+	if (obj->wprint < 0)
+		size = obj->wprint + 4;
+	write(1, str, size);
+	obj->printed += size;
+}
 
 void	ft_putwchar(wchar_t c, t_obj *obj)
 {
@@ -38,9 +47,5 @@ void	ft_putwchar(wchar_t c, t_obj *obj)
 		str[2] = ((c >> 6) & 0x3F) | 0x80;
 		str[3] = ((c >> 0) & 0x3F) | 0x80;
 	}
-	obj->wprint -= size;
-	if (obj->wprint < 0)
-		size = obj->wprint + 4;
-	write(1, str, size);
-	obj->printed += size;
+	ft_print_wchars(obj, size, str);
 }

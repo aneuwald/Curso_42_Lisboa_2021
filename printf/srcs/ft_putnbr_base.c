@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 20:43:37 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/19 19:18:43 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/23 16:44:38 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static int		base_is_invalid(char *base)
 	return (0);
 }
 
-void	ft_putnbr_base(unsigned long nbr, char *base, t_obj *obj)
+void			ft_putnbr_base(unsigned long nbr, char *base, t_obj *obj)
 {
-	unsigned long 	holder;
-	unsigned long 	base_length;
+	unsigned long	holder;
+	unsigned long	base_length;
 
 	if (base_is_invalid(base))
 		return ;
