@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 21:48:04 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/23 17:14:03 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/25 10:55:42 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_obj
 int					ft_printf(const char *str, ...);
 void				handle_flags(t_obj *obj);
 void				ft_print_c(t_obj *obj);
+void				ft_print_porc(t_obj *obj);
 void				ft_print_s(t_obj *obj);
 void				ft_print_ls(t_obj *obj);
 void				ft_print_di(t_obj *obj);

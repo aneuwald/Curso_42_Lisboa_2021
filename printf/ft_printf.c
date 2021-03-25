@@ -6,7 +6,7 @@
 /*   By: acanterg <acanterg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 10:58:44 by acanterg          #+#    #+#             */
-/*   Updated: 2021/03/23 17:13:53 by acanterg         ###   ########.fr       */
+/*   Updated: 2021/03/25 10:56:04 by acanterg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	handle_conversion(t_obj *obj)
 	else if (c == 'x' || c == 'X')
 		ft_print_x(obj);
 	else if (c == '%')
-		ft_putchar('%', obj);
+		ft_print_porc(obj);
 }
 
 int			ft_printf(const char *s, ...)
@@ -79,10 +79,10 @@ int			ft_printf(const char *s, ...)
 			obj.index += 1;
 			handle_flags(&obj);
 			handle_conversion(&obj);
+			reset_obj(&obj);
 		}
 		else
 			ft_putchar(c, &obj);
-		reset_obj(&obj);
 		obj.index += 1;
 	}
 	va_end(obj.vargs);
